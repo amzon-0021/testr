@@ -1,0 +1,34 @@
+import sys
+from PyQt5 import QtWidgets
+from browser2UI import Ui_MainWindow
+from PyQt5.QtCore import QUrl
+from os import system as sye
+import time
+print("---------------------------------------------------------")
+print("Chrne bowser ver.2.4")
+print("python 3.7.5")
+print("言語 \n python .NET")
+print("---------------------------------------------------------")
+print("起動中")
+sye("start sprash.exe")
+time.sleep(3)
+
+sye("taskkill /im sprash.exe")
+class browserUI(QtWidgets.QMainWindow):
+    def __init__(self,parent=None):
+        super(browserUI, self).__init__(parent)
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+ 
+    def webPageUpdate(self):
+        self.ui.webEngineView.setUrl(QUrl(self.ui.lineEdit.text()))
+ 
+    def urlLineSet(self, QUrl):
+        self.ui.lineEdit.setText(self.ui.webEngineView.url().url())
+
+if __name__ == '__main__':
+  app = QtWidgets.QApplication(sys.argv)
+  window = browserUI()
+  window.show()
+  sys.exit(app.exec_())
+    
